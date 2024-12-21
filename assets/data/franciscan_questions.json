@@ -1,0 +1,18 @@
+{
+  "questions": [
+    {
+      "id": "f1",
+      "question": "Taona nahafatesan'i Md Fransoà avy any Asizy",
+      "options": ["1228", "1226", "1229", "1227"],
+      "correctAnswer": 1,
+      "category": "history"
+    },
+    {
+      "id": "f2",
+      "question": "Taona nahaterahan'i Md Fransoà",
+      "options": ["1181", "1182", "1183", "1184"],
+      "correctAnswer": 1,
+      "category": "history"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "questions": [
+    {
+      "id": "c1",
+      "question": "Firy ny sakramenta?",
+      "options": ["6", "7", "8", "9"],
+      "correctAnswer": 1,
+      "category": "sacraments"
+    },
+    {
+      "id": "c2",
+      "question": "Iza no nanoratra ny Ave Maria?",
+      "options": ["Md Josefa", "Md Maria", "Anjely Gabriel", "Md Elizabeth"],
+      "correctAnswer": 2,
+      "category": "prayers"
+    }
+  ]
+}
