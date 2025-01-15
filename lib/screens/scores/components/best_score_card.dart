@@ -43,7 +43,7 @@ class BestScoreCard extends StatelessWidget {
           Row(
             children: [
               Text(
-                '${score.percentage.round()}%',
+                '${score.score}',
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 48,
@@ -51,23 +51,6 @@ class BestScoreCard extends StatelessWidget {
                 ),
               ),
               const Spacer(),
-              Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 12,
-                  vertical: 6,
-                ),
-                decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.2),
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Text(
-                  '${score.score}/${score.totalQuestions}',
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ),
             ],
           ),
         ],

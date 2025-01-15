@@ -32,10 +32,10 @@ class OnboardingPage extends StatelessWidget {
           children: [
             Image.asset(
               data.imagePath,
-              height: 280,
-              width: 280,
+              height: 250,
+              width: 250,
             ),
-            const SizedBox(height: 48),
+            const SizedBox(height: 28),
             Text(
               data.title,
               style: const TextStyle(
@@ -45,7 +45,7 @@ class OnboardingPage extends StatelessWidget {
               ),
               textAlign: TextAlign.center,
             ),
-            const SizedBox(height: 24),
+            const SizedBox(height: 18),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24),
               child: Text(

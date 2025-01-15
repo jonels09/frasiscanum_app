@@ -13,6 +13,151 @@
       "options": ["1181", "1182", "1183", "1184"],
       "correctAnswer": 1,
       "category": "history"
+    },
+  
+    
+    {
+      "id": "f3",
+      "question": "Inona no asan'ny rain'i Masindahy François ?",
+      "options": ["Mpivarotra lamba", "Mpanao politika", "Mpitondra fiangonana", "Mpanao asa tanana"],
+      "correctAnswer": 0,
+      "category": "history"
+    },
+    {
+      "id": "f4",
+      "question": "Tamin'ny taona firy no nanorenany ny Fikambanana Frères Mineurs ?",
+      "options": ["1209", "1185", "1225", "1215"],
+      "correctAnswer": 0,
+      "category": "history"
+    },
+    {
+      "id": "f5",
+      "question": "Taiza i Masindahy François no nahazo ny stigmates ?",
+      "options": ["Tendrombohitra Alvernia", "Tanànan'i Assise", "Fiangonana ao Roma", "Tanànan'i Padoue"],
+      "correctAnswer": 0,
+      "category": "history"
+    },
+    {
+      "id": "f6",
+      "question": "Iza no masina nanorina ny Fikambanana Clarisses niaraka tamin'i Masindahy François ?",
+      "options": ["Ste Claire d'Assise", "Ste Thérèse d'Avila", "Ste Catherine de Sienne", "Ste Bernadette Soubirous"],
+      "correctAnswer": 0,
+      "category": "history"
+    },
+    {
+      "id": "f7",
+      "question": "Tamin'ny taona firy no nodimandry i Masindahy François ?",
+      "options": ["1226", "1210", "1230", "1205"],
+      "correctAnswer": 0,
+      "category": "history"
+    },
+    {
+      "id": "f8",
+      "question": "Iza no papa nanaiky ny fitsipika voalohany franciscaine ?",
+      "options": ["Papa Innocent III", "Papa Grégoire IX", "Papa Honorius III", "Papa Anaclet II"],
+      "correctAnswer": 0,
+      "category": "history"
+    },
+    {
+      "id": "f9",
+      "question": "Inona no anarana fanampiny nomena an'i Masindahy François ?",
+      "options": ["mahantra kely", "mpivahiny", "masina", "mpanavao"],
+      "correctAnswer": 0,
+      "category": "history"
+    },
+    {
+      "id": "f10",
+      "question": "Inona ny nofinofin'i Masindahy François talohan'ny niovany ho kristiana?",
+      "options": ["Ny ho lasa miaramila malaza", "Ny ho lasa mpivarotra be harena", "Ny ho lasa mpanjaka", "Ny ho lasa mpitondra fiangonana"],
+      "correctAnswer": 0,
+      "category": "history"
+    },
+
+    {
+      "id": "f11",
+      "question": "Inona no anaran'i Masindahy François tamin'ny batemy ?",
+      "options": ["Giovanni di Pietro di Bernardone", "Francesco di Marco", "Matteo di Giovanni", "Antonio di Francesco"],
+      "correctAnswer": 0,
+      "category": "history"
+    },
+    {
+      "id": "f12",
+      "question": "Tao amin'ny tanàna inona no nahaterahan'i Masindahy François ?",
+      "options": ["Assise", "Florence", "Roma", "Venise"],
+      "correctAnswer": 0,
+      "category": "history"
+    },
+    
+    {
+      "id": "f13",
+      "question": "Inona no anaran'ny fiangonana izay namboarin'i Masindahy François ho an'ny Fikambanana Franciscaine ?",
+      "options": ["Santa Maria degli Angeli", "San Damiano", "Basilique Saint-François", "San Pietro"],
+      "correctAnswer": 0,
+      "category": "history"
+    },
+    {
+      "id": "f14",
+      "question": "Tamin'ny taona firy no nahazoany ny stigmates ?",
+      "options": ["1224", "1220", "1226", "1228"],
+      "correctAnswer": 0,
+      "category": "history"
+    },
+    {
+      "id": "f15",
+      "question": "Inona no anaran'ilay fiangonana izay nisy fanahy nampianatra azy hanova ny fiainany ?",
+      "options": ["San Damiano", "Santa Maria degli Angeli", "San Rufino", "San Francesco"],
+      "correctAnswer": 0,
+      "category": "history"
+    },
+    {
+      "id": "f16",
+      "question": "Iza no papa nanao ny fitsipika faharoa franciscaine tamin'ny taona 1223 ?",
+      "options": ["Papa Honorius III", "Papa Innocent III", "Papa Grégoire IX", "Papa Urbain IV"],
+      "correctAnswer": 2,
+      "category": "history"
+    },
+    {
+      "id": "f17",
+      "question": "Inona no anaran'ilay fiangonana izay nisy ny fasany ?",
+      "options": ["Basilique Saint-François d'Assise", "San Damiano", "Santa Maria degli Angeli", "San Rufino"],
+      "correctAnswer": 0,
+      "category": "history"
+    },
+    {
+      "id": "f18",
+      "question": "Tamin'ny taona firy no nanaovana ny fankalazana voalohany ny fahamasinan'i Masindahy François ?",
+      "options": ["1228", "1230", "1235", "1240"],
+      "correctAnswer": 0,
+      "category": "history"
+    },
+    {
+      "id": "f19",
+      "question": "Inona no anaran'ilay fiangonana izay nisy ny fiantsoana voalohany nataon'i Masindahy François ?",
+      "options": ["San Damiano", "Santa Maria degli Angeli", "San Rufino", "San Francesco"],
+      "correctAnswer": 0,
+      "category": "history"
+    },
+    {
+      "id": "f20",
+      "question": "Iza no nanoratra ny biôgrafia voalohany momba an'i Masindahy François ?",
+      "options": ["Thomas de Celano", "Bonaventure de Bagnoregio", "Frère Léon", "Frère Élie"],
+      "correctAnswer": 0,
+      "category": "history"
+    },
+    {
+      "id": "f21",
+      "question": "Tamin'ny taona firy no nanaovana batemy i Masindahy François ?",
+      "options": ["1182", "1185", "1190", "1195"],
+      "correctAnswer": 0,
+      "category": "history"
+    },
+    {
+      "id": "f22",
+      "question": "Iza no namany akaiky indrindra izay nanampy azy tamin'ny fananganana ny Fikambanana Franciscaine ?",
+      "options": ["Sainte Claire", "Frère Léon", "Frère Élie", "Frère Bernard"],
+      "correctAnswer": 3,
+      "category": "history"
     }
+
   ]
 }

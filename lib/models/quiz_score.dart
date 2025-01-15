@@ -15,10 +15,10 @@ class QuizScore {
 
   factory QuizScore.fromJson(Map<String, dynamic> json) {
     return QuizScore(
-      category: json['category'],
-      score: json['score'],
-      totalQuestions: json['totalQuestions'],
-      date: DateTime.parse(json['date']),
+      category: json['category'] as String,
+      score: json['score'] as int,
+      totalQuestions: json['totalQuestions'] as int,
+      date: DateTime.parse(json['date'] as String),
     );
   }
 

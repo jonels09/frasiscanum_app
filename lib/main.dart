@@ -1,56 +1,47 @@
 import 'package:flutter/material.dart';
+import 'package:franciscanum_quiz/views/login_screen2.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'providers/auth_provider.dart';
+import 'services/storage_service.dart';
 import 'screens/onboarding/onboarding_screen.dart';
-import 'screens/login_screen.dart';
 import 'screens/home/home_screen.dart';
 import 'screens/quiz/quiz_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final prefs = await SharedPreferences.getInstance();
-  final bool skipOnboarding = prefs.getBool('skip_onboarding') ?? false;
-  final bool onboardingCompleted =
-      prefs.getBool('onboarding_completed') ?? false;
-  final bool isLoggedIn = prefs.getString('user') != null;
+  final storageService = StorageService(prefs);
 
-  runApp(MyApp(
-    prefs: prefs,
-    skipOnboarding: skipOnboarding,
-    onboardingCompleted: onboardingCompleted,
-    isLoggedIn: isLoggedIn,
-  ));
+  runApp(MyApp(storageService: storageService));
 }
 
 class MyApp extends StatelessWidget {
-  final SharedPreferences prefs;
-  final bool skipOnboarding;
-  final bool onboardingCompleted;
-  final bool isLoggedIn;
+  final StorageService storageService;
 
   const MyApp({
     super.key,
-    required this.prefs,
-    required this.skipOnboarding,
-    required this.onboardingCompleted,
-    required this.isLoggedIn,
+    required this.storageService,
   });
 
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => AuthProvider(prefs)),
+        ChangeNotifierProvider(
+          create: (_) => AuthProvider(storageService),
+        ),
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Franciscanum Quiz',
         theme: ThemeData(
           primarySwatch: Colors.brown,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        home: _getInitialScreen(),
+        initialRoute: '/',
         routes: {
+          '/': (context) => const OnboardingScreen(),
           '/login': (context) => const LoginScreen(),
           '/home': (context) => const HomeScreen(),
         },
@@ -67,15 +58,5 @@ class MyApp extends StatelessWidget {
         },
       ),
     );
-  }
-
-  Widget _getInitialScreen() {
-    if (isLoggedIn) {
-      return const HomeScreen();
-    }
-    if (!onboardingCompleted || !skipOnboarding) {
-      return const OnboardingScreen();
-    }
-    return const LoginScreen();
   }
 }

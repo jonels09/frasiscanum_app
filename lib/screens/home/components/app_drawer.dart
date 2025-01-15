@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../../models/user.dart';
+import '../../../services/storage_service.dart';
 
 class AppDrawer extends StatelessWidget {
   final User? user;
@@ -16,52 +18,73 @@ class AppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: [
-          UserAccountsDrawerHeader(
-            decoration: const BoxDecoration(
-              color: Color(0xFF8B4513),
-            ),
-            currentAccountPicture: CircleAvatar(
-              backgroundColor: Colors.white,
-              child: Icon(
-                user?.gender == 'male' ? Icons.male : Icons.female,
-                color: const Color(0xFF8B4513),
-                size: 40,
+      child: FutureBuilder<SharedPreferences>(
+        future: SharedPreferences.getInstance(),
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) {
+            return const Center(child: CircularProgressIndicator());
+          }
+
+          final storageService = StorageService(snapshot.data!);
+          final firstName = storageService.getFirstName() ?? '';
+          final lastName = storageService.getLastName() ?? '';
+          final level = storageService.getLevel() ?? '';
+          final gender = storageService.getGender() ?? 'male';
+          final userImage = storageService.getUserImage() ??
+              (gender == 'male'
+                  ? 'assets/images/boy.png'
+                  : 'assets/images/girl.png');
+
+          return ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              UserAccountsDrawerHeader(
+                decoration: const BoxDecoration(
+                  color: Color(0xFF8B4513),
+                ),
+                currentAccountPicture: CircleAvatar(
+                  backgroundColor: Colors.white,
+                  child: Image.asset(
+                    userImage,
+                    width: 50,
+                    height: 50,
+                    //color: const Color(0xFF8B4513),
+                  ),
+                ),
+                accountName: Text(
+                  '$firstName $lastName',
+                  style: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                accountEmail: Text(
+                  level,
+                  style: const TextStyle(
+                    fontSize: 14,
+                  ),
+                ),
               ),
-            ),
-            accountName: Text(
-              user?.firstName ?? '',
-              style: const TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
+              ListTile(
+                leading: const Icon(Icons.home),
+                title: const Text('Accueil'),
+                onTap: () => Navigator.pop(context),
               ),
-            ),
-            accountEmail: Text(
-              user?.level ?? '',
-              style: const TextStyle(
-                fontSize: 14,
+              ListTile(
+                leading: const Icon(Icons.notifications),
+                title: const Text('Notifications'),
+                onTap: () {
+                  Navigator.pop(context);
+                  // ignore: avoid_print
+                  print('module notification à faire');
+                },
               ),
-            ),
-          ),
-          ListTile(
-            leading: const Icon(Icons.home),
-            title: const Text('Accueil'),
-            onTap: () => Navigator.pop(context),
-          ),
-          ListTile(
-            leading: const Icon(Icons.notifications),
-            title: const Text('Notifications'),
-            onTap: () {
-              Navigator.pop(context);
-              // TODO: Implement notifications
-            },
-          ),
-          _buildLanguageListTile(context),
-          _buildThemeListTile(context),
-          _buildAboutListTile(context),
-        ],
+              _buildLanguageListTile(context),
+              _buildThemeListTile(context),
+              _buildAboutListTile(context),
+            ],
+          );
+        },
       ),
     );
   }

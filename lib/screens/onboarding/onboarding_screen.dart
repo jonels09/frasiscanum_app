@@ -1,5 +1,7 @@
+// ignore_for_file: prefer_final_fields
+
 import 'package:flutter/material.dart';
-import '../login_screen.dart';
+import '../../views/login_screen2.dart';
 import 'onboarding_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -20,14 +22,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       title: 'Formation Franciscaine',
       description:
           'Découvrez les modules de formation franciscains pour approfondir votre spiritualité.',
-      imagePath: 'assets/images/franciscan.png',
+      imagePath: 'assets/images/franciscan.jpg',
       color: const Color(0xFF8B4513),
     ),
     OnboardingPageData(
       title: 'Ressources Catholiques',
       description:
           'Accédez à une riche collection de ressources catholiques pour nourrir votre foi.',
-      imagePath: 'assets/images/catholic.png',
+      imagePath: 'assets/images/about-us.png',
       color: const Color(0xFF654321),
     ),
     OnboardingPageData(
@@ -82,7 +84,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             },
           ),
           Positioned(
-            bottom: 48.0,
+            bottom: 28.0,
             left: 0,
             right: 0,
             child: Column(
@@ -105,29 +107,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   ),
                 ),
                 if (_currentPage == _pages.length - 1)
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 32, vertical: 16),
-                    child: Row(
-                      children: [
-                        Checkbox(
-                          value: _skipOnboarding,
-                          onChanged: (value) {
-                            setState(() {
-                              _skipOnboarding = value ?? false;
-                            });
-                          },
-                          fillColor: MaterialStateProperty.all(Colors.white),
-                          checkColor: Colors.brown,
-                        ),
-                        const Text(
-                          'Ne plus afficher au prochain démarrage',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ],
-                    ),
-                  ),
-                const SizedBox(height: 16),
+                  const SizedBox(height: 16),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 24),
                   child: ElevatedButton(

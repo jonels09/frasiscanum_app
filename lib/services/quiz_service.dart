@@ -11,7 +11,7 @@ class QuizService {
       final Map<String, dynamic> jsonData = json.decode(jsonString);
 
       if (!jsonData.containsKey('questions')) {
-        throw FormatException('Invalid JSON format: missing questions key');
+        throw const FormatException('Invalid JSON format: missing questions key');
       }
 
       final questions = (jsonData['questions'] as List)

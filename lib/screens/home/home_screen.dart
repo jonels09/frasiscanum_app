@@ -53,10 +53,12 @@ class HomeScreen extends StatelessWidget {
       drawer: AppDrawer(
         user: user,
         onThemeChanged: () {
-          // TODO: Implement theme change
+          // ignore: avoid_print
+          print('changement theme ou couleur');
         },
         onLanguageChanged: () {
-          // TODO: Implement language change
+          // ignore: avoid_print
+          print('changement langue');
         },
       ),
       body: Builder(
@@ -64,9 +66,9 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             children: [
               HomeHeader(
-                userName: user?.firstName ?? '',
-                gender: user?.gender,
-                onDrawerOpen: () => Scaffold.of(context).openDrawer(),
+                userName: user?.lastName ?? '',
+                gender: user?.gender ?? 'male',
+                onMenuPressed: () => Scaffold.of(context).openDrawer(),
               ),
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16.0),
@@ -108,6 +110,7 @@ class HomeScreen extends StatelessWidget {
                                   builder: (context) => const ScoresScreen()),
                             );
                           } else {
+                            // ignore: avoid_print
                             print("clique");
                           }
                           // Handle other categories (score, prieres) here
@@ -124,3 +127,100 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+
+/*import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../../providers/auth_provider.dart';
+import 'components/header/header.dart';
+import 'components/app_drawer.dart';
+import 'components/category_list_item.dart';
+import '../../models/quiz.dart';
+
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final user = Provider.of<AuthProvider>(context).currentUser;
+
+    return Scaffold(
+      backgroundColor: Colors.grey[100],
+      drawer: AppDrawer(user: user),
+      body: Column(
+        children: [
+          // Header Section with Gradient
+          Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Color(0xFF8B4513), Color(0xFF654321)],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+              ),
+            ),
+            child: SafeArea(
+              bottom: false,
+              child: HomeHeader(
+                userName: user?.lastName ?? '',
+                gender: user?.gender ?? 'male',
+                onMenuPressed: () {
+                  Scaffold.of(context).openDrawer();
+                },
+              ),
+            ),
+          ),
+
+          // Main Content
+          Expanded(
+            child: ListView(
+              padding: const EdgeInsets.all(16),
+              children: [
+                CategoryListItem(
+                  category: QuizCategory(
+                    id: 'franciscain',
+                    name: 'Quiz Franciscain',
+                    description: 'Questions sur la spiritualité franciscaine',
+                    iconPath: 'assets/icons/franciscan.png',
+                  ),
+                  onTap: () {
+                    Navigator.pushNamed(
+                      context,
+                      '/quiz',
+                      arguments: {'category': 'franciscain'},
+                    );
+                  },
+                ),
+                CategoryListItem(
+                  category: QuizCategory(
+                    id: 'catholique',
+                    name: 'Quiz Catholique',
+                    description: 'Questions sur la foi catholique',
+                    iconPath: 'assets/icons/catholic.png',
+                  ),
+                  onTap: () {
+                    Navigator.pushNamed(
+                      context,
+                      '/quiz',
+                      arguments: {'category': 'catholique'},
+                    );
+                  },
+                ),
+                CategoryListItem(
+                  category: QuizCategory(
+                    id: 'score',
+                    name: 'Mes Scores',
+                    description: 'Voir mes résultats',
+                    iconPath: 'assets/icons/score.png',
+                  ),
+                  onTap: () {
+                    Navigator.pushNamed(context, '/scores');
+                  },
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+*/

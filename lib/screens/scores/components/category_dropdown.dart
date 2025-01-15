@@ -30,11 +30,7 @@ class CategoryDropdown extends StatelessWidget {
           value: selectedCategory,
           isExpanded: true,
           icon: const Icon(Icons.keyboard_arrow_down_rounded),
-          items: [
-            DropdownMenuItem(
-              value: 'all',
-              child: Text('Tous les scores'),
-            ),
+          items: const [
             DropdownMenuItem(
               value: 'franciscain',
               child: Text('Quiz Franciscain'),

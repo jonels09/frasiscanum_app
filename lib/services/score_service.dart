@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../models/quiz_score.dart';
 
 class ScoreService {
@@ -10,39 +9,49 @@ class ScoreService {
   ScoreService(this._prefs);
 
   Future<void> saveScore(QuizScore score) async {
-    final scores = await getScores();
-    scores.add(score);
-    await _prefs.setString(
-        _scoresKey,
-        jsonEncode(
-          scores.map((s) => s.toJson()).toList(),
-        ));
+    try {
+      final scores = await getScores();
+      scores.add(score);
+
+      final List<Map<String, dynamic>> jsonList =
+          scores.map((s) => s.toJson()).toList();
+
+      await _prefs.setString(_scoresKey, jsonEncode(jsonList));
+    } catch (e) {
+      // ignore: avoid_print
+      print('Error saving score: $e');
+      rethrow;
+    }
   }
 
   Future<List<QuizScore>> getScores() async {
-    final String? scoresJson = _prefs.getString(_scoresKey);
-    if (scoresJson == null) return [];
+    try {
+      final dynamic storedValue = _prefs.get(_scoresKey);
 
-    final List<dynamic> scoresList = jsonDecode(scoresJson);
-    return scoresList.map((json) => QuizScore.fromJson(json)).toList();
+      if (storedValue == null) {
+        return [];
+      }
+
+      if (storedValue is! String) {
+        // Clear invalid data
+        await _prefs.remove(_scoresKey);
+        return [];
+      }
+
+      final List<dynamic> scoresList = jsonDecode(storedValue);
+      return scoresList
+          .map((json) => QuizScore.fromJson(Map<String, dynamic>.from(json)))
+          .toList();
+    } catch (e) {
+      // ignore: avoid_print
+      print('Error getting scores: $e');
+      // Clear potentially corrupted data
+      await _prefs.remove(_scoresKey);
+      return [];
+    }
   }
 
-  Future<Map<String, double>> getAverageScoresByCategory() async {
-    final scores = await getScores();
-    final Map<String, List<double>> categoryScores = {};
-
-    for (var score in scores) {
-      categoryScores.putIfAbsent(score.category, () => []);
-      categoryScores[score.category]!.add(score.percentage);
-    }
-
-    return Map.fromEntries(
-      categoryScores.entries.map(
-        (entry) => MapEntry(
-          entry.key,
-          entry.value.reduce((a, b) => a + b) / entry.value.length,
-        ),
-      ),
-    );
+  Future<void> clearScores() async {
+    await _prefs.remove(_scoresKey);
   }
 }

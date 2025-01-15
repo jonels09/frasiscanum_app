@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// ignore: depend_on_referenced_packages
 import 'package:intl/intl.dart';
 import '../../../models/quiz_score.dart';
 
@@ -35,7 +36,7 @@ class RecentScoreList extends StatelessWidget {
             leading: CircleAvatar(
               backgroundColor: _getScoreColor(score.percentage),
               child: Text(
-                '${score.percentage.round()}%',
+                '${score.score}',
                 style: const TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
@@ -52,22 +53,6 @@ class RecentScoreList extends StatelessWidget {
             subtitle: Text(
               DateFormat('dd/MM/yyyy HH:mm').format(score.date),
               style: TextStyle(color: Colors.grey[600], fontSize: 12),
-            ),
-            trailing: Container(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 8,
-                vertical: 4,
-              ),
-              decoration: BoxDecoration(
-                color: Colors.grey[100],
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Text(
-                '${score.score}/${score.totalQuestions}',
-                style: const TextStyle(
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
             ),
           ),
         );
